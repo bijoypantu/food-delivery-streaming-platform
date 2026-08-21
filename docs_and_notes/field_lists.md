@@ -82,3 +82,15 @@
 - latitude
 - longitude
 - speed
+
+#### driver_shift_started:
+  - event_id
+  - driver_id
+  - event_timestamp
+  - ingestion_timestamp
+
+#### driver_shift_ended:
+  - event_id
+  - driver_id
+  - event_timestamp
+  - ingestion_timestamp
