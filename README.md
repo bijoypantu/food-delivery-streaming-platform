@@ -24,14 +24,31 @@ Postgres — Warehouse / BI layer
 
 Supporting services: **Airflow** (orchestrates dbt runs and batch jobs alongside the always-on streaming job) and **OpenLineage + Marquez** (lineage tracking across all layers).
 
+## Project structure
+
+```
+food-delivery-streaming-platform/
+├── designs/                          # Design docs (versioned alongside code)
+│   ├── order_states.drawio           # Order lifecycle state machine
+│   ├── system_architecture.drawio    # End-to-end pipeline diagram
+│   └── docs_and_notes/
+│       ├── event_types_and_field_lists.md   # Full Kafka event schemas, all 4 topics
+│       ├── questions_and_grains.docx        # 41 business questions mapped to fact grains
+│       └── notes.md                         # Running design notes
+├── docker-compose.yaml               # Kafka (KRaft) + Postgres
+├── requirements.txt                  # Python dependencies (pip freeze)
+├── .env                               # Local secrets (gitignored)
+├── .gitignore
+├── README.md
+└── venv/                              # Python 3.12 virtual environment (gitignored)
+```
+
 ## Domain model
 
 Three simultaneous, semi-independent business processes are simulated:
 - **Order fulfillment** — placed → hotel accepted → food prepared → driver assigned → picked up → delivered (or cancelled at any stage before pickup)
 - **Driver activity** — shift start/end, continuous GPS telemetry, delivery acceptance/rejection, earnings, ratings
 - **App/customer behaviour** — sessions, search, cart actions, checkout, funnel conversion
-
-Full event schemas, the order state machine, and 41 business questions mapped to fact-table grains are documented in [`/designs`](./designs).
 
 ## Kafka topics
 
@@ -70,10 +87,6 @@ Every event carries `event_id`, `event_type`, `event_timestamp`, and `ingestion_
 | 8 | OpenLineage + Marquez observability | ⬜ Not started |
 | 9 | Testing | ⬜ Not started |
 | 10 | Documentation & polish | ⬜ Not started |
-
-## Design docs
-
-See [`/designs`](./designs) for the order state machine, system architecture diagram, and the full business-questions-to-grain mapping.
 
 ## Local setup
 
