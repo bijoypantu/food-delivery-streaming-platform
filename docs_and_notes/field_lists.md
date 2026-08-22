@@ -1,6 +1,5 @@
 <h1 align="center">Order States</h1>
 
----
 #### Order Placed
 - event_id
 - order_id
