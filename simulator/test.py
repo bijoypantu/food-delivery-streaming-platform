@@ -10,4 +10,6 @@ mobile = fake.random_element(
     length=9
 ))
 
-print(mobile)
+customer_id = "CUST" + str(1).zfill(4)
+
+print(customer_id)
