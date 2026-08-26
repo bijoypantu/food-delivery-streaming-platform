@@ -5,7 +5,7 @@ fake = Faker("en_IN")
 
 def generate_one_customer(num):
     # personal details
-    customer_id = "CUST" + 
+    customer_id = "CUST"
     gender = random.choice(["male", "female"])
     first_name = ""
     last_name = ""
