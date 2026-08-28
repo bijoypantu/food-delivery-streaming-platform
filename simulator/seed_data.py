@@ -1,15 +1,15 @@
+from geopy.geocoders import Nominatim
 from faker import Faker
+from datetime import date
 import random
 
 fake = Faker("en_IN")
 
 EMAIL_DOMAINS = ["@gmail.com", "@outlook.com", "@yahoo.com", "@hotmail.com", "@zohomail.in"]
-WEST_BENGAL_CITIES = [
-    "Kolkata", "Howrah", "Durgapur", "Siliguri", "Asansol",
-    "Kharagpur", "Bardhaman", "Malda", "Baharampur", "Habra"
-]
-WB_LAT_RANGE = (21.5, 27.0)
-WB_LONG_RANGE = (85.8, 89.9)
+
+KOLKATA_LAT_RANGE = (22.45, 22.67)
+KOLKATA_LONG_RANGE = (88.27, 88.45)
+
 def generate_one_customer(num):
     # personal details
     customer_id = "CUST" + str(num).zfill(4)
@@ -34,18 +34,30 @@ def generate_one_customer(num):
         length=9
     ))
 
-    # location    
-    city = random.choice(WEST_BENGAL_CITIES)
-    state = "West Bengal"
+    # Rough lat/long bounding box for Kolkata and Howrah
+    lat = round(random.uniform(*KOLKATA_LAT_RANGE), 6)
+    long = round(random.uniform(*KOLKATA_LONG_RANGE), 6)
+    # location
+    geolocator = Nominatim(user_agent="my_app")
+    location = geolocator.reverse((lat, long))
+
+    address = location.address
+    addr_metadata = location.raw["address"]
+
+    city = (
+        addr_metadata.get("city")
+        or addr_metadata.get("town")
+        or addr_metadata.get("village")
+    )
+    state = addr_metadata.get("state")
+    district = addr_metadata.get("state_district")
+    pincode = addr_metadata.get("postcode")
     country = "India"
 
-    # Rough lat/long bounding box for West Bengal
-    lat = round(random.uniform(*WB_LAT_RANGE), 6)
-    long = round(random.uniform(*WB_LONG_RANGE), 6)
 
     joining_date = fake.date_between(
-        start_date='2026-01-01',
-        end_date='2026-08-31'
+        start_date=date(2026, 1, 1),
+        end_date=date(2026, 8, 31)
     )
 
     return {
@@ -57,8 +69,11 @@ def generate_one_customer(num):
         "email": email,
         "mobile": mobile,
         "city": city,
+        "district": district,
         "state": state,
+        "pincode": pincode,
         "country": country,
+        "full_address": address,
         "latitude": lat,
         "longitude": long,
         "joining_date": str(joining_date)
