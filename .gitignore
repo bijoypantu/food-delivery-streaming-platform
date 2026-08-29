@@ -6,4 +6,3 @@ __pycache__/
 data_lake/
 logs/
 *.egg-info/
-simulator/test.py
