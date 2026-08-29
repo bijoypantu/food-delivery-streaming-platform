@@ -1,14 +1,18 @@
-from geopy.geocoders import Nominatim
 from faker import Faker
 from datetime import date
 import random
+import json
+from pprint import pprint
 
 fake = Faker("en_IN")
 
 EMAIL_DOMAINS = ["@gmail.com", "@outlook.com", "@yahoo.com", "@hotmail.com", "@zohomail.in"]
 
-KOLKATA_LAT_RANGE = (22.45, 22.67)
-KOLKATA_LONG_RANGE = (88.27, 88.45)
+def load_zones():
+    with open("simulator/seed_reference/kolkata_zones.json") as f:
+        return json.load(f)
+
+KOLKATA_ZONES = load_zones()
 
 def generate_one_customer(num):
     # personal details
@@ -35,25 +39,11 @@ def generate_one_customer(num):
     ))
 
     # Rough lat/long bounding box for Kolkata and Howrah
-    lat = round(random.uniform(*KOLKATA_LAT_RANGE), 6)
-    long = round(random.uniform(*KOLKATA_LONG_RANGE), 6)
-    # location
-    geolocator = Nominatim(user_agent="my_app")
-    location = geolocator.reverse((lat, long))
+    zone = random.choice(KOLKATA_ZONES)
+    lat = round(zone["lat"] + random.uniform(-0.005, 0.005), 6)
+    long = round(zone["long"] + random.uniform(-0.005, 0.005), 6)
 
-    address = location.address
-    addr_metadata = location.raw["address"]
-
-    city = (
-        addr_metadata.get("city")
-        or addr_metadata.get("town")
-        or addr_metadata.get("village")
-    )
-    state = addr_metadata.get("state")
-    district = addr_metadata.get("state_district")
-    pincode = addr_metadata.get("postcode")
-    country = "India"
-
+    address = zone["address"]
 
     joining_date = fake.date_between(
         start_date=date(2026, 1, 1),
@@ -68,12 +58,12 @@ def generate_one_customer(num):
         "date_of_birth": str(date_of_birth),
         "email": email,
         "mobile": mobile,
-        "city": city,
-        "district": district,
-        "state": state,
-        "pincode": pincode,
-        "country": country,
-        "full_address": address,
+        "city": zone["city"],
+        "district": zone["district"],
+        "state": zone["state"],
+        "pincode": zone["pincode"],
+        "country": "India",
+        "full_address": zone["address"],
         "latitude": lat,
         "longitude": long,
         "joining_date": str(joining_date)
@@ -90,3 +80,6 @@ def generate_one_restaurant():
 
 def restaurant_menu_items():
     return
+
+
+pprint(generate_customers(5), sort_dicts=False)
