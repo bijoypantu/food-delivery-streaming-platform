@@ -27,3 +27,34 @@ VEHICLE_DATABASE = [
 
 EMAIL_DOMAINS = ["@gmail.com", "@outlook.com", "@yahoo.com", "@hotmail.com", "@zohomail.in"]
 
+MENU_TEMPLATES = {
+    "North Indian": [
+        "Butter Chicken", "Paneer Tikka Masala", "Dal Makhani", "Chole Bhature", "Tandoori Roti",
+        "Garlic Naan", "Rogan Josh", "Palak Paneer", "Malai Kofta", "Chicken Tikka"
+    ],
+    "Bengali": [
+        "Macher Jhol", "Kosha Mangsho", "Shorshe Ilish", "Chingri Malai Curry", "Cholar Dal",
+        "Aloo Posto", "Luchi Aloo Dum", "Mishti Doi", "Rasgulla", "Bhapa Ilish"
+    ],
+    "Chinese": [
+        "Hakka Noodles", "Chilli Chicken", "Chicken Manchurian", "Veg Spring Roll", "Veg Hakka Noodles",
+        "Schezwan Fried Rice", "Honey Chilli Potato", "Chicken Lollipop", "Manchow Soup", "Paneer Chilli"
+    ],
+    "South Indian": [
+        "Masala Dosa", "Idli Sambar", "Medu Vada", "Uttapam", "Filter Coffee", "Mysore Bonda",
+        "Rava Dosa", "Curd Rice", "Lemon Rice", "Pongal"
+    ],
+    "Fast Food": [
+        "Zinger Burger", "Chicken Popcorn", "Cheese Burst Pizza", "Margherita Pizza", "Chicken Nuggets",
+        "French Fries", "Veg Burger", "Peri Peri Fries", "Cold Coffee", "Garlic Bread"
+    ],
+    "Mughlai": [
+        "Chicken Biryani", "Mutton Biryani", "Seekh Kebab", "Shahi Paneer", "Firni"
+        "Nihari", "Kakori Kebab", "Chicken Rezala", "Mutton Rogan Josh", "Sheermal",
+    ],
+    "Tibetan / Momo": [
+        "Steamed Chicken Momo", "Steamed Veg Momo", "Fried Momo", "Tandoori Momo",
+        "Chilli Momo", "Cheese Momo", "Momo Soup", "Paneer Momo"
+    ]
+}
+

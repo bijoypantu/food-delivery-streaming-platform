@@ -97,14 +97,11 @@ def generate_one_driver(num):
     #Vehicle Information
     vehicle = random.choices(VEHICLE_DATABASE, weights=[0.55, 0.40, 0.05], k=1)[0]
     vehicle_type = vehicle["category"]
-    model_list = vehicle["models"]
-    vehicle_model = random.choice(model_list)
+    vehicle_model = random.choice(vehicle["models"])
 
     # Vehicle Number
     rto_code = f"{random.randint(1, 99):02d}"
-
     series_and_number = fake.bothify(text="?? ####").upper()
-
     vehicle_number = f"WB {rto_code} {series_and_number}"
 
     #Geographic Information
