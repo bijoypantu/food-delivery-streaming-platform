@@ -52,9 +52,48 @@ MENU_TEMPLATES = {
         "Chicken Biryani", "Mutton Biryani", "Seekh Kebab", "Shahi Paneer", "Firni"
         "Nihari", "Kakori Kebab", "Chicken Rezala", "Mutton Rogan Josh", "Sheermal",
     ],
-    "Tibetan / Momo": [
+    "Tibetan/Momo": [
         "Steamed Chicken Momo", "Steamed Veg Momo", "Fried Momo", "Tandoori Momo",
         "Chilli Momo", "Cheese Momo", "Momo Soup", "Paneer Momo"
     ]
 }
 
+INDEPENDENT_RESTAURANTS = [
+    # North Indian
+    {"name": "Jai Hind Dhaba", "cuisine": "North Indian"},
+    {"name": "Punjabee Rasoi", "cuisine": "North Indian"},
+    {"name": "Rang De Basanti Dhaba", "cuisine": "North Indian"},
+    # Bengali
+    {"name": "Bhojohori Manna", "cuisine": "Bengali"},
+    {"name": "Kolkata Rajbari", "cuisine": "Bengali"},
+    {"name": "Soul of Bengal", "cuisine": "Bengali"},
+    # Chinese
+    {"name": "Taste of Sikkim", "cuisine": "Chinese"},
+    {"name": "Golden Joy Restaurant", "cuisine": "Chinese"},
+    {"name": "Sei Vui Restaurant", "cuisine": "Chinese"},
+    # Tibetan / Momo
+    {"name": "Tibetan Delight", "cuisine": "Tibetan/Momo"},
+    {"name": "Blue Poppy Thakali", "cuisine": "Tibetan/Momo"},
+    {"name": "Denzong Kitchen", "cuisine": "Tibetan/Momo"},
+    # Mughlai
+    {"name": "Zam Zam Restaurant", "cuisine": "Mughlai"},
+    {"name": "Nizam's Restaurant", "cuisine": "Mughlai"},
+    {"name": "Arsalan", "cuisine": "Mughlai"},
+    # South Indian
+    {"name": "Tamarind Restaurant", "cuisine": "South Indian"},
+    {"name": "Chennai Square", "cuisine": "South Indian"},
+    {"name": "Mysore Canteen", "cuisine": "South Indian"},
+    # Fast Food
+    {"name": "Yummy Bites", "cuisine": "Fast Food"},
+    {"name": "The Gazeboo", "cuisine": "Fast Food"},
+    {"name": "Friez N Funs", "cuisine": "Fast Food"},
+]
+
+CHAIN_RESTAURANTS = [
+    {"name": "KFC", "cuisine": "Fast Food"},
+    {"name": "McDonald's", "cuisine": "Fast Food"},
+    {"name": "Domino's Pizza", "cuisine": "Fast Food"},
+    {"name": "Burger King", "cuisine": "Fast Food"},
+    {"name": "Haldiram's", "cuisine": "North Indian"},
+    {"name": "Wow! Momo", "cuisine": "Tibetan/Momo"},
+]
